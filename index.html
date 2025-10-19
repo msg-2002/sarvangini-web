@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sarvangini Multipurpose Organization</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&family=Tiro+Devanagari+Marathi&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* THEME COLOR PALETTE using CSS Variables */
+    :root {
+      --c-primary: #EF4444; /* Red 500 */
+      --c-primary-hover: #D73C3C; /* Darker Red */
+      --c-secondary: #D4AF37; /* Dark Golden */
+      --c-accent: #4FD1C5; /* Teal */
+      --c-background: #F7FAFC; /* Almost White */
+      --c-surface: #FFFFFF; /* White */
+      --c-text-main: #2D3748; /* Dark Slate */
+      --c-text-light: #718096; /* Medium Gray */
+      --c-border: #E2E8F0; /* Light Gray */
+      --pattern-color: rgba(0,0,0,0.05);
+      --primary-glow: rgba(239, 68, 68, 0.5);
+      --c-text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+    }
+    html.dark {
+      --c-primary: #F56565; /* Brighter Red */
+      --c-primary-hover: #F87A7A; /* Even Lighter Red */
+      --c-secondary: #D4AF37; /* Dark Golden */
+      --c-accent: #81E6D9; /* Lighter Teal */
+      --c-background: #1A202C; /* Dark Slate */
+      --c-surface: #2D3748; /* Lighter Slate */
+      --c-text-main: #E2E8F0; /* Light Gray */
+      --c-text-light: #A0AEC0; /* Lighter Medium Gray */
+      --c-border: #4A5568; /* Darker Gray */
+      --pattern-color: rgba(255,255,255,0.04);
+      --primary-glow: rgba(245, 101, 101, 0.6);
+      --c-text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 0 10px rgba(212, 175, 55, 0.1);
+    }
+
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      background-color: var(--c-background);
+      color: var(--c-text-main);
+    }
+    .font-marathi, .font-hindi { 
+        font-family: 'Tiro Devanagari Marathi', serif; 
+        letter-spacing: 0.5px;
+    }
+    .font-heading { font-family: 'Playfair Display', serif; }
+    .font-body { font-family: 'Poppins', sans-serif; }
+
+    .pattern-bg {
+      background-image:
+        radial-gradient(circle, var(--pattern-color) 1px, transparent 1px);
+      background-size: 1.5rem 1.5rem;
+    }
+    
+    .card-lift {
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+    .card-lift:hover {
+      transform: translateY(-8px);
+    }
+    html:not(.dark) .card-lift:hover { box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); }
+    html.dark .card-lift:hover { box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.2), 0 8px 10px -6px rgb(0 0 0 / 0.2); }
+
+    .btn-press {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-press:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 15px var(--primary-glow);
+    }
+    .btn-press:active {
+      transform: scale(0.95) translateY(0);
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    
+    .text-shadow-custom {
+      text-shadow: var(--c-text-shadow);
+    }
+
+    .input-themed {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid var(--c-border);
+        border-radius: 0.375rem;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+        background-color: var(--c-surface);
+        color: var(--c-text-main);
+    }
+    .input-themed::placeholder { color: var(--c-text-light); }
+    .input-themed:focus, .input-themed:focus-visible {
+        outline: none;
+        border-color: var(--c-primary);
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--c-primary) 25%, transparent);
+    }
+    
+    a:focus-visible, button:focus-visible {
+        outline: 2px solid transparent;
+        outline-offset: 2px;
+        border-radius: 4px;
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--c-primary) 40%, transparent);
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+        animation: fadeIn 0.5s ease-out forwards;
+    }
+
+    /* Header Themes */
+    .header-theme-diwali {
+        background-color: #4c1d24;
+        background-image: radial-gradient(var(--c-secondary) 0.5px, transparent 0.5px);
+        background-size: 1.5rem 1.5rem;
+        border-bottom: 2px solid var(--c-secondary);
+    }
+    .header-theme-diwali .app-name, .header-theme-diwali .tagline {
+        color: #fff;
+        text-shadow: 0 0 8px var(--c-secondary);
+    }
+    .header-theme-diwali .nav-link, .header-theme-diwali .control-btn {
+        color: #f1f5f9; /* Slate 100 */
+    }
+     .header-theme-diwali .nav-link-active {
+        color: var(--c-secondary);
+        border-color: var(--c-secondary);
+     }
+
+
+    .header-theme-holi {
+        background-color: #f0f8ff;
+        background-image:
+            radial-gradient(circle at 10% 20%, #ff69b488 1px, transparent 1px),
+            radial-gradient(circle at 80% 70%, #00ced188 1px, transparent 1px),
+            radial-gradient(circle at 50% 50%, #ffd70088 1px, transparent 1px);
+        background-size: 5rem 5rem;
+        border-bottom: 2px solid var(--c-primary);
+    }
+    .dark .header-theme-holi {
+        background-color: #1a202c;
+        background-image:
+            radial-gradient(circle at 10% 20%, #ff69b444 1px, transparent 1px),
+            radial-gradient(circle at 80% 70%, #00ced144 1px, transparent 1px),
+            radial-gradient(circle at 50% 50%, #ffd70044 1px, transparent 1px);
+    }
+
+    .header-theme-eid {
+        background-color: #004d40;
+        background-image:
+            linear-gradient(135deg, rgba(255,255,255,0.05) 25%, transparent 25%),
+            linear-gradient(225deg, rgba(255,255,255,0.05) 25%, transparent 25%),
+            linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%),
+            linear-gradient(315deg, rgba(255,255,255,0.05) 25%, transparent 25%);
+        background-position: 10px 0, 10px 0, 0 0, 0 0;
+        background-size: 20px 20px;
+        background-repeat: repeat;
+        border-bottom: 2px solid #c0c0c0;
+    }
+     .header-theme-eid .app-name, .header-theme-eid .tagline {
+        color: #fff;
+    }
+     .header-theme-eid .nav-link, .header-theme-eid .control-btn {
+        color: #f1f5f9;
+    }
+     .header-theme-eid .nav-link-active {
+        color: #c0c0c0; /* Silver */
+        border-color: #c0c0c0;
+     }
+
+  </style>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: 'var(--c-primary)',
+            'primary-hover': 'var(--c-primary-hover)',
+            secondary: 'var(--c-secondary)',
+            accent: 'var(--c-accent)',
+            background: 'var(--c-background)',
+            surface: 'var(--c-surface)',
+            text: 'var(--c-text-main)',
+            'light-text': 'var(--c-text-light)',
+            'border-color': 'var(--c-border)',
+          },
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+            marathi: ['Tiro Devanagari Marathi', 'serif'],
+            hindi: ['Tiro Devanagari Hindi', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+<script type="importmap">
+{
+  "imports": {
+    "firebase/": "https://aistudiocdn.com/firebase@^12.4.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "vite": "https://aistudiocdn.com/vite@^7.1.10",
+    "uuid": "https://aistudiocdn.com/uuid@^13.0.0",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.0.4",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.4"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="font-body">
+  <div id="root"></div>
+  <script type="module" src="/src/index.tsx"></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
