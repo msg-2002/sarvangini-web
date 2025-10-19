@@ -1,0 +1,18 @@
+# Dependencies
+/node_modules
+
+# Vite build output
+/dist
+
+# Environment variables - THIS IS THE MOST IMPORTANT PART FOR SECURITY
+.env
+.env.*
+!.env.example
+
+# IDE and system files
+.DS_Store
+.idea/
+.vscode/
+*.suo
+*.user
+*.log
